@@ -160,29 +160,35 @@ private:
 
 // 19 и 17 кодируются открытым ключем (5, 21) и декодируются закрытым (17, 21), но в encode вводятся 3 и 7, открытый ключ составляется из них
 
+// компиляция 32 бита под 17 c++
 
 int main(int argc, char* argv[])
 {
-Coder coder = Coder();
-cout << "example command: " << "RSA.exe \"path to file\" encode p q" << endl << "RSA.exe \"path to file\" decode d n";
+    if (argc <= 1)
+    {
+        exit(1);
+    }
 
-   
+    setlocale(LC_ALL, "russian");
+    Coder coder = Coder();
+    cout << "example command: " << "RSA.exe \"path to file\" encode p q" << endl << "RSA.exe \"path to file\" decode d n";
 
-if (argv[2] == "encode") {
-    int p = strtol(argv[3], NULL, 10);
-    int q = strtol(argv[4], NULL, 10);
-    coder.encode(argv[2], p, q);
-}
+    stringstream path(argv[1]);
+    stringstream op_type(argv[2]);
+    stringstream a(argv[3]);
+    stringstream b(argv[4]);
 
-if (argv[2] == "decode") {
-    int d = strtol(argv[3], NULL, 10);
-    int n = strtol(argv[4], NULL, 10);
-    coder.decode(argv[2], d, n);
-}
+    if (op_type.str() == "encode") {
+        cout << 3342432 << endl;
+        coder.encode(path.str(), stoi(a.str()), stoi(b.str()));
 
-//coder.encode("D:\\folder", 3, 7);
-//coder.decode("D:\\folder", 17, 21);
+    }
+    else if (op_type.str() == "decode") {
+        cout << "555565616516" << endl;
+        coder.decode(path.str(), stoi(a.str()), stoi(b.str()));
+    }
 
-
-return 0;
+    
+    //coder.encode("D:\\folder", 3, 7);
+    //coder.decode("D:\\folder", 17, 21);
 }
