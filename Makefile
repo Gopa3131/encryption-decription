@@ -1,4 +1,4 @@
-SRCS = $(wildcard *.cpp) $(wildcard ./Ceaser/*.cpp) $(wildcard ./AtBash/*.cpp)
+SRCS = $(wildcard *.cpp) $(wildcard ./Ceaser/*.cpp) $(wildcard ./AtBash/*.cpp) $(wildcard ./Transporation/*.cpp) $(wildcard ./RSA/*.cpp)
 OBJS = $(SRCS:.cpp=.o)
 
 CC = g++
@@ -10,7 +10,7 @@ NAME = enc_denc
 $(NAME): $(OBJS)
 		$(CC) $(FLAGS) $^ -o $(NAME)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:

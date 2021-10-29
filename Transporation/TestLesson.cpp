@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <string>
-
+#include <cmath>
 using namespace std;
 
 string transporate(string line);
@@ -52,7 +52,7 @@ string transporate(string line) {
 		v5[kol] = line[i];
 		kol++;
 	}
-	
+
 	for (int i = 0; i <= b; i++) {
 		final_line = final_line + v1[i] + v2[i] + v3[i] + v4[i] + v5[i];
 	}
