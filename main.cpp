@@ -6,6 +6,7 @@
 #include "Ceaser/Ceaser.hpp"
 #include "AtBash/atbash.hpp"
 #include "Transporation/TestLesson.hpp"
+#include "RSA/RSA.h"
 
 
 std::string readFile(const std::string& fileName) {
@@ -49,8 +50,19 @@ int main()
 			response = code_atbash((char *)file.c_str());
 		else if ( response == "transporate")
 			response = transporate(file);
-		else if ( response == "RSA" )
-			response = "RSA"; //Тут Саня сам придумай.
+		else if ( response == "RSA" ){
+			Coder coder = Coder();
+			std::string dir;
+			int p, q;
+			std::cout << "type here dir that contains files to encode using RSA method: ";
+			std::cin >> dir;
+			std::cout << endl <<"type here the first prime that will be used to create a secret key and encode file: ";
+			std::cin >> p;
+			std::cout << endl <<"type here the second prime: ";
+			std::cin >> q;
+			std::cout << endl;
+			coder.encode(dir, p, q);
+		}	
 		fo.open(filec + ".encoded");
 		fo << response;
 		fo.close();
@@ -64,8 +76,19 @@ int main()
 			response = decode_atbash((char *)file.c_str());
 		else if ( response == "transporate")
 			response = detransporate(file);
-		else if ( response == "RSA" )
-			response = "RSA"; //Тут Саня сам придумай.
+		else if ( response == "RSA" ){
+			Coder coder = Coder();
+			std::string dir;
+			int secret_key_d, secret_key_n;
+			std::cout << "type here dir that contains files to decode using RSA method: ";
+			std::cin >> dir;
+			std::cout << endl <<"type here the first value of secret key: ";
+			std::cin >> secret_key_d;
+			std::cout << endl <<"type here the second value of secret key: ";
+			std::cin >> secret_key_n;
+			std::cout << endl;
+			coder.decode(dir, secret_key_d, secret_key_n);
+		}
 		fo.open(filec + ".decoded");
 		fo << response;
 	}
