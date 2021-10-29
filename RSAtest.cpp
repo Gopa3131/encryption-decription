@@ -39,7 +39,7 @@ int findMutuallyPrime(int euler) {
 }
     
 
-
+/*
 int main()
 {
     // тест функции проверки чисел на простоту.
@@ -69,3 +69,4 @@ int main()
    
 }
 
+*/
