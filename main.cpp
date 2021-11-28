@@ -17,7 +17,7 @@ std::string readFile(const std::string& fileName) {
 }
 
 
-int main()
+int main(int argc, char **argv)
 {
 	std::string file;
 	std::string filec;
@@ -25,7 +25,8 @@ int main()
 	bool state;
 	std::ifstream fi;
 	std::ofstream fo;
-
+	if (argc != 4)
+	{
 	std::cout << "Enter the file to encrypt/decrypt" << std::endl;
 	std::cin >> response;
 	filec = response;
@@ -39,11 +40,19 @@ int main()
 	fi.close();
 	std::cout << "Encrypt or decrypt? 1/0" << std::endl;
 	std::cin >> state;
-
+	}
+	else
+	{
+		state = std::atoi(argv[2]);
+		filec = argv[1];
+		response = argv[3];
+	}
 	if (state)
 	{
+		if (argc != 4) {
 		std::cout << "Choose method: 1 - Ceaser, 2 - Atbash, 3 - transporate, 4 - RSA" << std::endl;
 		std::cin >> response;
+		}
 		if ( response == "Ceaser")
 			response = encodeCeaser(file);
 		else if ( response == "Atbash")
@@ -68,8 +77,10 @@ int main()
 		fo.close();
 	}
 	else {
+		if (argc != 4){
 		std::cout << "Choose method: 1 - Ceaser, 2 - Atbash, 3 - transporate, 4 - RSA" << std::endl;
 		std::cin >> response;
+		}
 		if ( response == "Ceaser")
 			response = dencCeaser(file);
 		else if ( response == "Atbash")
