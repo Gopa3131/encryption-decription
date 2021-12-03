@@ -45,6 +45,8 @@ int main(int argc, char **argv)
 	{
 		state = std::atoi(argv[2]);
 		filec = argv[1];
+		file = readFile(filec);
+		fi.close();
 		response = argv[3];
 	}
 	if (state)
@@ -72,7 +74,7 @@ int main(int argc, char **argv)
 			std::cout << endl;
 			coder.encode(dir, p, q);
 		}*/
-		fo.open(filec + ".encoded");
+		fo.open(filec + ".encoded", std::ostream::out | std::ostream::trunc);
 		fo << response;
 		fo.close();
 	}
@@ -100,7 +102,7 @@ int main(int argc, char **argv)
 			std::cout << endl;
 			coder.decode(dir, secret_key_d, secret_key_n);
 		}*/
-		fo.open(filec + ".decoded");
+		fo.open(filec + ".decoded", std::ostream::out | std::ostream::trunc);
 		fo << response;
 	}
 	return 0;
