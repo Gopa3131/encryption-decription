@@ -50,7 +50,7 @@ int main()
 			response = code_atbash((char *)file.c_str());
 		else if ( response == "transporate")
 			response = transporate(file);
-		else if ( response == "RSA" ){
+	/*	else if ( response == "RSA" ){
 			Coder coder = Coder();
 			std::string dir;
 			int p, q;
@@ -62,7 +62,7 @@ int main()
 			std::cin >> q;
 			std::cout << endl;
 			coder.encode(dir, p, q);
-		}	
+		}*/
 		fo.open(filec + ".encoded");
 		fo << response;
 		fo.close();
@@ -76,7 +76,7 @@ int main()
 			response = decode_atbash((char *)file.c_str());
 		else if ( response == "transporate")
 			response = detransporate(file);
-		else if ( response == "RSA" ){
+		/*else if ( response == "RSA" ){
 			Coder coder = Coder();
 			std::string dir;
 			int secret_key_d, secret_key_n;
@@ -88,7 +88,7 @@ int main()
 			std::cin >> secret_key_n;
 			std::cout << endl;
 			coder.decode(dir, secret_key_d, secret_key_n);
-		}
+		}*/
 		fo.open(filec + ".decoded");
 		fo << response;
 	}
